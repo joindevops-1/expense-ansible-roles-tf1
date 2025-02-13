@@ -64,8 +64,8 @@
   community.mysql.mysql_db:
     state: import
     name: all
-    login_user: "{{ lookup('amazon.aws.aws_ssm', '/expense/{{ ENVIRONMENT }}/mysql_admin_user', decrypt=True ) }}"
-    login_password: "{{ lookup('amazon.aws.aws_ssm', '/expense/{{ ENVIRONMENT }}/mysql_admin_password', decrypt=True ) }}"
+    login_user: "{{ lookup('amazon.aws.aws_ssm', '/expense/{{ ENVIRONMENT }}/mysql_admin_user', region='us-east-1', decrypt=True ) }}"
+    login_password: "{{ lookup('amazon.aws.aws_ssm', '/expense/{{ ENVIRONMENT }}/mysql_admin_password', region='us-east-1', decrypt=True ) }}"
     login_host: "{{ MYSQL_HOST }}"
     target: /app/schema/backend.sql
 
